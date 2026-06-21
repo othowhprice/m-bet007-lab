@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bet007 · 轻便导航介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f4f7;
+            color: #2d3436;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 0 50px 0;
+        }
+        /* 顶部导航 */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e9edf2;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.3px;
+            color: #1e272e;
+        }
+        .brand span {
+            color: #0984e3;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2d3436;
+            font-weight: 450;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .nav-links a:hover {
+            color: #0984e3;
+            border-bottom-color: #0984e3;
+        }
+        /* 核心卡片区 */
+        .hero-card {
+            background: white;
+            border-radius: 28px;
+            padding: 44px 36px;
+            border: 1px solid #e4e9ef;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+            margin-bottom: 40px;
+        }
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            color: #12161c;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            max-width: 700px;
+            color: #3d4a5b;
+            margin-bottom: 24px;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: #eef2f7;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: #36658b;
+            font-weight: 460;
+            border: 1px solid #dce2ea;
+        }
+        /* 三场景模块 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .scene-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px 22px;
+            border: 1px solid #e4e9ef;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+        }
+        .scene-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+        .scene-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.75;
+        }
+        .scene-title {
+            font-size: 1.25rem;
+            font-weight: 530;
+            margin-bottom: 8px;
+            color: #1e272e;
+        }
+        .scene-text {
+            font-size: 0.95rem;
+            color: #4b5b6b;
+            line-height: 1.55;
+        }
+        /* 常见说明 */
+        .faq-section {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 34px 36px;
+            border: 1px solid #e4e9ef;
+            margin-bottom: 40px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+        }
+        .faq-title {
+            font-size: 1.5rem;
+            font-weight: 540;
+            margin-bottom: 20px;
+            color: #12161c;
+        }
+        .faq-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #edf1f6;
+        }
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 520;
+            margin-bottom: 6px;
+            color: #1f2a36;
+        }
+        .faq-a {
+            color: #4b5b6b;
+            font-size: 0.95rem;
+        }
+        .faq-a a {
+            color: #0984e3;
+            text-decoration: none;
+            font-weight: 470;
+        }
+        .faq-a a:hover {
+            text-decoration: underline;
+        }
+        /* 底部 */
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6a7a8a;
+            padding-top: 20px;
+            border-top: 1px solid #e2e7ed;
+            margin-top: 10px;
+        }
+        /* 响应式 */
+        @media (max-width: 820px) {
+            .scenes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-title {
+                font-size: 1.7rem;
+            }
+        }
+        @media (max-width: 540px) {
+            .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+            .hero-card {
+                padding: 30px 20px;
+            }
+            .faq-section {
+                padding: 24px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <div class="brand">◉ <span>bet</span>007</div>
+        <ul class="nav-links">
+            <li><a href="#intro">介绍</a></li>
+            <li><a href="#scenes">功能场景</a></li>
+            <li><a href="#faq">常见说明</a></li>
+        </ul>
+    </nav>
+
+    <!-- 核心介绍 -->
+    <div class="hero-card" id="intro">
+        <div class="hero-title">围绕信息与工具的轻量导航</div>
+        <div class="hero-desc">
+            在数字内容日益丰富的今天，<a href="https://m-bet007.com" style="color:#0984e3; font-weight:500; text-decoration:none;">bet007</a> 力求以简洁的方式整理不同领域的信息入口。无论你是关注行业动态、寻找实用工具，还是希望了解某个主题的延伸内容，这里都尝试提供一条清晰、直接的路径。
+        </div>
+        <span class="hero-tag">📌 信息聚合 · 场景导航</span>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid" id="scenes">
+        <div class="scene-card">
+            <span class="scene-icon">📰</span>
+            <div class="scene-title">内容快速浏览</div>
+            <div class="scene-text">
+                将常见主题下的资讯、更新和要点进行归纳分类，节省逐页查找的时间。你可以根据自身兴趣，直接定位到相关模块，减少信息噪音。
+            </div>
+        </div>
+        <div class="scene-card">
+            <span class="scene-icon">🧰</span>
+            <div class="scene-title">实用工具索引</div>
+            <div class="scene-text">
+                汇集各类轻量在线工具与参考资源，覆盖数据查询、文档整理、日常计算等需求。每个入口都经过基础筛选，注重可用性与稳定性。
+            </div>
+        </div>
+        <div class="scene-card">
+            <span class="scene-icon">🌐</span>
+            <div class="scene-title">主题延伸阅读</div>
+            <div class="scene-text">
+                针对特定关键词或领域，梳理背景资料、常见概念和延伸讨论。适合希望快速建立初步认知，或寻找进一步探索起点的用户。
+            </div>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ摘要) -->
+    <div class="faq-section" id="faq">
+        <div class="faq-title">常见说明</div>
+
+        <div class="faq-item">
+            <div class="faq-q">这个导航页面主要提供什么？</div>
+            <div class="faq-a">
+                它围绕 <a href="https://m-bet007.com" style="color:#0984e3; text-decoration:none;">bet007</a> 所涉及的若干方向，将信息以场景卡片的形式分组呈现。每个模块都指向明确的内容类型，方便你根据当前需要快速选择。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">内容会经常更新吗？</div>
+            <div class="faq-a">
+                基础框架保持稳定，内部链接和资源会按节奏整理与替换，以适应信息变化。建议定期浏览，获取最近收录的实用内容。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">如何反馈建议或资源推荐？</div>
+            <div class="faq-a">
+                你可以通过页面底部的联系方式（目前暂未开放）或关注后续迭代。当前阶段以完善现有模块为主，欢迎在合适的时机提出想法。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">移动设备上的显示效果如何？</div>
+            <div class="faq-a">
+                页面采用弹性布局与卡片式设计，在手机、平板和桌面端均能自适应调整，保证阅读体验一致。导航与场景区域均针对小屏幕做了优化。
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>bet007 · 轻量导航</span>  &nbsp;|&nbsp;  内容方向与场景持续优化中
+    </div>
+</div>
+</body>
+</html>
