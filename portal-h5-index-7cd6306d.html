@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG 模拟器 · 叙事介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f6fdfb 0%, #eefaf6 100%);
+            min-height: 100vh;
+            padding: 2rem 1.2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #1a2f2c;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(3px);
+            border-radius: 2.4rem;
+            padding: 2.2rem 2rem 2.8rem;
+            box-shadow: 0 12px 28px -10px rgba(12, 58, 50, 0.12);
+            border: 1px solid rgba(64, 175, 150, 0.20);
+        }
+
+        /* 开场短句 */
+        .opening {
+            font-size: 1.6rem;
+            font-weight: 380;
+            letter-spacing: 0.02em;
+            padding: 0.8rem 0 0.2rem;
+            border-left: 5px solid #2f8f7a;
+            padding-left: 1.4rem;
+            margin-bottom: 1.6rem;
+            color: #1d4a42;
+        }
+
+        .opening em {
+            font-style: normal;
+            background: linear-gradient(135deg, #1b7a67, #3da58e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 500;
+        }
+
+        /* 承接段落 */
+        .lead {
+            background: #ffffffd0;
+            padding: 1.6rem 1.8rem;
+            border-radius: 2rem;
+            margin: 0.6rem 0 1.6rem;
+            box-shadow: 0 2px 12px rgba(50, 120, 100, 0.06);
+            border: 1px solid #cde9e1;
+            font-size: 1rem;
+            color: #1f3e39;
+        }
+
+        .lead strong {
+            color: #156356;
+            font-weight: 500;
+        }
+
+        .lead a {
+            color: #1b7a67;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border 0.2s;
+        }
+
+        .lead a:hover {
+            border-bottom-color: #2fae92;
+        }
+
+        /* 网格卡片特点区 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 1.6rem;
+            padding: 1.4rem 1.2rem 1.2rem;
+            border: 1px solid #b6ded3;
+            transition: transform 0.2s, box-shadow 0.25s;
+            box-shadow: 0 4px 8px -6px rgba(20, 70, 60, 0.08);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 18px -10px #2d7b6a30;
+            border-color: #47bba0;
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            color: #145a4c;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .feature-card h3 span {
+            display: inline-block;
+            background: #d3f0e7;
+            width: 8px;
+            height: 8px;
+            border-radius: 10px;
+            margin-right: 4px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #2b5a51;
+            opacity: 0.9;
+            margin-top: 0.2rem;
+        }
+
+        /* 温和结尾引用块 */
+        .closing-note {
+            background: #e7f6f1;
+            border-radius: 1.6rem;
+            padding: 1.6rem 1.8rem;
+            margin: 1.8rem 0 1.2rem;
+            border-left: 6px solid #2f8f7a;
+            color: #1b423b;
+            font-size: 0.98rem;
+        }
+
+        .closing-note a {
+            color: #126b59;
+            font-weight: 500;
+            border-bottom: 1px dotted #2fae92;
+            text-decoration: none;
+        }
+
+        .closing-note a:hover {
+            border-bottom-style: solid;
+        }
+
+        /* faq 摘要 */
+        .faq-mini {
+            margin-top: 2.2rem;
+            border-top: 1px solid #b1d9cd;
+            padding-top: 1.4rem;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item dt {
+            font-weight: 500;
+            color: #0e5545;
+            font-size: 1rem;
+        }
+
+        .faq-item dd {
+            margin-left: 0;
+            color: #2e5d53;
+            font-size: 0.92rem;
+            padding-left: 0.8rem;
+            border-left: 3px solid #6ec4ab;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem 3rem;
+            }
+            .container {
+                padding: 1.6rem 1.2rem 2rem;
+                border-radius: 1.8rem;
+            }
+            .opening {
+                font-size: 1.4rem;
+                padding-left: 1rem;
+            }
+            .lead {
+                padding: 1.2rem;
+                font-size: 0.95rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.9rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .opening {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 开场短句 -->
+        <div class="opening">
+            <em>从体验出发，理解一种叙事逻辑。</em><br>
+            当界面与交互趋向直觉，模拟本身也成为一种语言。
+        </div>
+
+        <!-- 承接段落 -->
+        <div class="lead">
+            <strong>PG 模拟器</strong> 并不只是对某一类操作的复现；它更像是一套可以观察、调整、再观察的认知框架。对于想了解数字环境如何回应人的意图来说，<a href="https://portal-h5-pg.com">pg模拟器</a> 提供一个低门槛的起点——不需要额外安装，不需要复杂配置，只要打开页面，就能进入一个经过设计的交互场域。
+        </div>
+
+        <!-- 特点卡片网格 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3><span></span> 轻量表达</h3>
+                <p>无需下载或注册，打开即用，聚焦于模拟本身而非环境搭建。</p>
+            </div>
+            <div class="feature-card">
+                <h3><span></span> 反馈节奏</h3>
+                <p>操作与响应之间的延迟被刻意控制，让人更清晰地感知每一步的因果。</p>
+            </div>
+            <div class="feature-card">
+                <h3><span></span> 结构透明</h3>
+                <p>界面元素与逻辑层级经过梳理，减少认知负担，保持注意力流动。</p>
+            </div>
+            <div class="feature-card">
+                <h3><span></span> 适应场景</h3>
+                <p>无论是快速验证想法，还是向他人演示某种流程，都自然贴合。</p>
+            </div>
+        </div>
+
+        <!-- 温和的结尾 / 承接延伸 -->
+        <div class="closing-note">
+            模拟器的意义不在于替代真实，而在于提供一种可反复审视的切片。当你打开 <a href="https://portal-h5-pg.com">pg模拟器</a>，实际上是在与一组精心编排的状态对话。每次点击、每次变化，都在讲述关于界面的微小故事。
+        </div>
+
+        <!-- FAQ 摘要，风格温和，不诱导 -->
+        <div class="faq-mini">
+            <dl class="faq-item">
+                <dt>▍模拟器需要提前安装什么？</dt>
+                <dd>不需要。它基于 Web 运行，只要使用主流浏览器访问链接即可。</dd>
+            </dl>
+            <dl class="faq-item">
+                <dt>▍适合哪些人了解或使用？</dt>
+                <dd>对交互逻辑、界面反馈、轻量模拟感兴趣的人都可以尝试，没有技术门槛。</dd>
+            </dl>
+            <dl class="faq-item">
+                <dt>▍与真实环境的主要区别？</dt>
+                <dd>模拟器聚焦于核心交互脉络，剥离了外围噪音，更适合学习与观察。</dd>
+            </dl>
+        </div>
+
+        <!-- 底部留白：很轻的一句说明，不含链接 -->
+        <div style="margin-top: 1.6rem; font-size: 0.8rem; text-align: center; color: #558a7b; opacity: 0.6; letter-spacing: 0.3px;">
+            — 叙述即结构，交互即文本 —
+        </div>
+    </div>
+
+    <!-- 隐藏创作种子（仅用于变化，不显示） -->
+    <span style="display: none;">4301848d0fc0a33e</span>
+</body>
+</html>
